@@ -173,19 +173,22 @@ public class BikeRide {
     // data arrays (e.g., heartRate, velocity, etc.)
     //
     public Stream<DataFrame> fusedFramesStream() {
+    	//Create Iterators for streams
     	PrimitiveIterator.OfDouble heartRateStream = this.heartRateStream().iterator();
     	PrimitiveIterator.OfDouble velocityStream = this.velocityStream().iterator();
     	PrimitiveIterator.OfDouble gradeStream = this.gradeStream().iterator();
     	PrimitiveIterator.OfDouble altitudeStream = this.altitudeStream().iterator();
     	Iterator<LatLng> coordinateStream = this.coordinateStream().iterator();
     	
+    	//Iterate through streams and create an array of DataFrames
+    	int count= 0;
         DataFrame[] dfArray = new DataFrame[(int) this.heartRateStream().count()];
-        int count= 0;
     	while (heartRateStream.hasNext()) {
-    		DataFrame df = new DataFrame(coordinateStream.next(),gradeStream.next(),altitudeStream.next(),velocityStream.next(),heartRateStream.next());
-    		dfArray[count] = df;
+    		dfArray[count] = new DataFrame(coordinateStream.next(),gradeStream.next(),altitudeStream.next(),velocityStream.next(),heartRateStream.next());
     		count ++;
     	}
+    	
+    	//Return DataFrame array via Stream
         return Stream.of(dfArray);
     }
 
