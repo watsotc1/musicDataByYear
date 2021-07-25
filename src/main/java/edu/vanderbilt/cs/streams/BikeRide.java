@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.PrimitiveIterator;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -125,7 +127,7 @@ public class BikeRide {
     // Hint: see Arrays.stream(...)
     //
     public DoubleStream heartRateStream() {
-        return DoubleStream.empty();
+    	return DoubleStream.of(this.heartRate);
     }
 
     // @ToDo:
@@ -134,7 +136,7 @@ public class BikeRide {
     // stream of the specified values
     //
     public DoubleStream velocityStream() {
-        return DoubleStream.empty();
+        return DoubleStream.of(this.velocity);
     }
 
     // @ToDo:
@@ -142,7 +144,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public DoubleStream gradeStream() {
-        return DoubleStream.empty();
+        return DoubleStream.of(this.grade);
     }
 
     // @ToDo:
@@ -150,7 +152,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public DoubleStream altitudeStream() {
-        return DoubleStream.empty();
+        return DoubleStream.of(this.altitude);
     }
 
     // @ToDo:
@@ -158,7 +160,7 @@ public class BikeRide {
     // Implement this method so it returns a
     // stream of the specified values
     public Stream<LatLng> coordinateStream() {
-        return Stream.empty();
+        return Stream.of(this.coordinates);
     }
 
 
@@ -171,7 +173,20 @@ public class BikeRide {
     // data arrays (e.g., heartRate, velocity, etc.)
     //
     public Stream<DataFrame> fusedFramesStream() {
-        return Stream.empty();
+    	PrimitiveIterator.OfDouble heartRateStream = this.heartRateStream().iterator();
+    	PrimitiveIterator.OfDouble velocityStream = this.velocityStream().iterator();
+    	PrimitiveIterator.OfDouble gradeStream = this.gradeStream().iterator();
+    	PrimitiveIterator.OfDouble altitudeStream = this.altitudeStream().iterator();
+    	Iterator<LatLng> coordinateStream = this.coordinateStream().iterator();
+    	
+        DataFrame[] dfArray = new DataFrame[(int) this.heartRateStream().count()];
+        int count= 0;
+    	while (heartRateStream.hasNext()) {
+    		DataFrame df = new DataFrame(coordinateStream.next(),gradeStream.next(),altitudeStream.next(),velocityStream.next(),heartRateStream.next());
+    		dfArray[count] = df;
+    		count ++;
+    	}
+        return Stream.of(dfArray);
     }
 
 
