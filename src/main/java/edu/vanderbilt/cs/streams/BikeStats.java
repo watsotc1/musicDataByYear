@@ -44,11 +44,11 @@ public class BikeStats {
      */
     public Stream<BikeRide.DataFrame> averagedDataFrameStream(int windowSize){
     	return StreamUtils.slidingWindow(ride.fusedFramesStream().collect(Collectors.toList()), windowSize)
-    			.map(ls -> new DataFrame(ls.get(0).getCoordinate(),
-    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getGrade).apply(ls), 
-    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getAltitude).apply(ls), 
-    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getVelocity).apply(ls), 
-    							 StreamUtils.averageOfProperty(BikeRide.DataFrame::getHeartRate).apply(ls)));
+		    			  .map(ls -> new DataFrame(ls.get(0).getCoordinate(),
+		    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getGrade).apply(ls), 
+		    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getAltitude).apply(ls), 
+		    						     StreamUtils.averageOfProperty(BikeRide.DataFrame::getVelocity).apply(ls), 
+		    							 StreamUtils.averageOfProperty(BikeRide.DataFrame::getHeartRate).apply(ls)));
     }
     
     // @ToDo:
@@ -63,7 +63,9 @@ public class BikeStats {
     // the same.
     //
     public Stream<LatLng> locationsOfStops() {
-        return Stream.empty();
+    	return ride.fusedFramesStream().filter(ls -> ls.getVelocity() == 0)
+    			.map(BikeRide.DataFrame::getCoordinate)
+    			.filter(c -> c.equals(c));
     }
 
 }
