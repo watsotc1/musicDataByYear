@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PrimitiveIterator;
+import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -173,23 +174,9 @@ public class BikeRide {
     // data arrays (e.g., heartRate, velocity, etc.)
     //
     public Stream<DataFrame> fusedFramesStream() {
-    	//Create Iterators for streams
-    	PrimitiveIterator.OfDouble heartRateStream = this.heartRateStream().iterator();
-    	PrimitiveIterator.OfDouble velocityStream = this.velocityStream().iterator();
-    	PrimitiveIterator.OfDouble gradeStream = this.gradeStream().iterator();
-    	PrimitiveIterator.OfDouble altitudeStream = this.altitudeStream().iterator();
-    	Iterator<LatLng> coordinateStream = this.coordinateStream().iterator();
-    	
-    	//Iterate through streams and create an array of DataFrames
-    	int count= 0;
-        DataFrame[] dfArray = new DataFrame[(int) this.heartRateStream().count()];
-    	while (heartRateStream.hasNext()) {
-    		dfArray[count] = new DataFrame(coordinateStream.next(),gradeStream.next(),altitudeStream.next(),velocityStream.next(),heartRateStream.next());
-    		count ++;
-    	}
-    	
-    	//Return DataFrame array via Stream
-        return Stream.of(dfArray);
+        return IntStream
+        		.range(0, coordinates.length)
+        		.mapToObj(i -> new DataFrame(coordinates[i], grade[i], altitude[i], velocity[i], heartRate[i]));
     }
 
 
