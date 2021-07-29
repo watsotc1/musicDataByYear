@@ -16,6 +16,8 @@ public class BikeRideTest {
     public static final double EXPECTED_AVG_LATITUDE = 36.13;
     public static final double EXPECTED_AVG_LONGITUDE = -86.84;
 
+    public static final int EXPECTED_COVID_DATA_ITEMS = 328;
+    
     public static BikeRide loadSampleRide() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -23,6 +25,21 @@ public class BikeRideTest {
         } catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
+    
+    public static COVIDdata loadCOVIDData() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(new FileInputStream("src/main/resources/covidData.json"), COVIDdata.class);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @Test
+    public void testDateStream(){
+    	COVIDdata data = loadCOVIDData();
+        assertEquals(EXPECTED_COVID_DATA_ITEMS, data.dateStream().count());
     }
 
     @Test
