@@ -1,6 +1,6 @@
 package edu.vanderbilt.cs.streams;
 
-import java.io.FileInputStream;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -8,33 +8,30 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import edu.vanderbilt.cs.streams.BikeRide.DataFrame;
-import edu.vanderbilt.cs.streams.BikeRide.DataStream;
-
 public class COVIDdata {
 	
 	public static class DataFrame {
-		public final int date;
-		public final int death;
-		public final int deathIncrease;
-		public final int hospitalizedCumulative;
-		public final int hospitalizedCurrently;
-		public final int hospitalizedIncrease;
-		public final int inIcuCumulative;
-		public final int inIcuCurrently;
-		public final int negative;
-		public final int negativeIncrease;
-		public final int onVentilatorCurrently;
-		public final int pending;
-		public final int positive;
-		public final int positiveIncrease;
-		public final int totalTestResultsIncrease;
+		public final String date;
+		public final double death;
+		public final double deathIncrease;
+		public final double hospitalizedCumulative;
+		public final double hospitalizedCurrently;
+		public final double hospitalizedIncrease;
+		public final double inIcuCumulative;
+		public final double inIcuCurrently;
+		public final double negative;
+		public final double negativeIncrease;
+		public final double onVentilatorCurrently;
+		public final double pending;
+		public final double positive;
+		public final double positiveIncrease;
+		public final double totalTestResultsIncrease;
 		
-		public DataFrame(int date,int death,int deathIncrease,
-				int hospitalizedCumulative,int hospitalizedCurrently,
-				int hospitalizedIncrease,int inIcuCumulative,int inIcuCurrently,
-				int negative,int negativeIncrease,int onVentilatorCurrently,
-				int pending,int positive,int positiveIncrease,int totalTestResultsIncrease) {
+		public DataFrame(String date,double death,double deathIncrease,
+				double hospitalizedCumulative,double hospitalizedCurrently,
+				double hospitalizedIncrease,double inIcuCumulative,double inIcuCurrently,
+				double negative,double negativeIncrease,double onVentilatorCurrently,
+				double pending,double positive,double positiveIncrease,double totalTestResultsIncrease) {
 			
 			super();
 			this.date = date;
@@ -54,72 +51,72 @@ public class COVIDdata {
 			this.totalTestResultsIncrease = totalTestResultsIncrease;	
 		}
 		
-		public int getDate() {
+		public String getDate() {
 			return date;
 		}
 		
-		public int getDeath() {
+		public double getDeath() {
 			return death;
 		}
-		public int getDeathIncrease() {
+		public double getDeathIncrease() {
 			return deathIncrease;
 		}
 		
-		public int getHospitalizedCumulative() {
+		public double getHospitalizedCumulative() {
 			return hospitalizedCumulative;
 		}
 		
-		public int getHospitalizedCurrently() {
+		public double getHospitalizedCurrently() {
 			return hospitalizedCurrently;
 		}
 		
-		public int getHospitalizedIncrease() {
+		public double getHospitalizedIncrease() {
 			return hospitalizedIncrease;
 		}
 		
-		public int getInIcuCumulative() {
+		public double getInIcuCumulative() {
 			return inIcuCumulative;
 		}
 		
-		public int getInIcuCurrently() {
+		public double getInIcuCurrently() {
 			return inIcuCurrently;
 		}
 		
-		public int getNegative() {
+		public double getNegative() {
 			return negative;
 		}
 		
-		public int getNegativeIncrease() {
+		public double getNegativeIncrease() {
 			return negativeIncrease;
 		}
 		
-		public int getOnVentilatorCurrently() {
+		public double getOnVentilatorCurrently() {
 			return onVentilatorCurrently;
 		}
 		
-		public int getPending() {
+		public double getPending() {
 			return pending;
 		}
 		
-		public int getPositive() {
+		public double getPositive() {
 			return positive;
 		}
 		
-		public int getPositiveIncrease() {
+		public double getPositiveIncrease() {
 			return positiveIncrease;
 		}
 		
-		public int getTotalTestResultsIncrease() {
+		public double getTotalTestResultsIncrease() {
 			return totalTestResultsIncrease;
 		}
 	}
 	
 	public static class DataStream {
 		
-		public final int[] data;
+		public final double[] data;
 		
 		@JsonCreator
-        public DataStream(@JsonProperty("data") int[] data) {
+        public DataStream(@JsonProperty("data") double[] data) {
             this.data = data;
         }
 
@@ -127,24 +124,37 @@ public class COVIDdata {
         public void setOther(String key, Object v) {}
 	}
 	
-	public final int[] date;
-	public final int[] death;
-	public final int[] deathIncrease;
-	public final int[] hospitalizedCumulative;
-	public final int[] hospitalizedCurrently;
-	public final int[] hospitalizedIncrease;
-	public final int[] inIcuCumulative;
-	public final int[] inIcuCurrently;
-	public final int[] negative;
-	public final int[] negativeIncrease;
-	public final int[] onVentilatorCurrently;
-	public final int[] pending;
-	public final int[] positive;
-	public final int[] positiveIncrease;
-	public final int[] totalTestResultsIncrease;
+public static class DateStream {
+		
+		public final String[] data;
+		
+		@JsonCreator
+        public DateStream(@JsonProperty("data") String[] data) {
+            this.data = data;
+        }
+
+        @JsonAnySetter
+        public void setOther(String key, Object v) {}
+	}
+	
+	public final String[] date;
+	public final double[] death;
+	public final double[] deathIncrease;
+	public final double[] hospitalizedCumulative;
+	public final double[] hospitalizedCurrently;
+	public final double[] hospitalizedIncrease;
+	public final double[] inIcuCumulative;
+	public final double[] inIcuCurrently;
+	public final double[] negative;
+	public final double[] negativeIncrease;
+	public final double[] onVentilatorCurrently;
+	public final double[] pending;
+	public final double[] positive;
+	public final double[] positiveIncrease;
+	public final double[] totalTestResultsIncrease;
 	
 	@JsonCreator
-	public COVIDdata(@JsonProperty("date") DataStream date,
+	public COVIDdata(@JsonProperty("date") DateStream date,
 					 @JsonProperty("death") DataStream death,
 					 @JsonProperty("deathIncrease") DataStream deathIncrease,
 					 @JsonProperty("hospitalizedCumulative") DataStream hospitalizedCumulative,
@@ -178,64 +188,64 @@ public class COVIDdata {
 		this.totalTestResultsIncrease = totalTestResultsIncrease.data;
 	}
 	
-	public IntStream dateStream() {
-		return IntStream.of(date);
+	public Stream<String> dateStream() {
+		return Stream.of(date);
 	}
 	
-	public IntStream deathStream() {
-		return IntStream.of(death);
+	public DoubleStream deathStream() {
+		return DoubleStream.of(death);
 	}
 	
-	public IntStream deathIncreaseStream() {
-		return IntStream.of(deathIncrease);
+	public DoubleStream deathIncreaseStream() {
+		return DoubleStream.of(deathIncrease);
 	}
 	
-	public IntStream hospitalizedCumulativeStream() {
-		return IntStream.of(hospitalizedCumulative);
+	public DoubleStream hospitalizedCumulativeStream() {
+		return DoubleStream.of(hospitalizedCumulative);
 	}
 	
-	public IntStream hospitalizedCurrentlyStream() {
-		return IntStream.of(hospitalizedCurrently);
+	public DoubleStream hospitalizedCurrentlyStream() {
+		return DoubleStream.of(hospitalizedCurrently);
 	}
 	
-	public IntStream hospitalizedIncreaseStream() {
-		return IntStream.of(hospitalizedIncrease);
+	public DoubleStream hospitalizedIncreaseStream() {
+		return DoubleStream.of(hospitalizedIncrease);
 	}
 	
-	public IntStream inIcuCumulativeStream() {
-		return IntStream.of(inIcuCumulative);
+	public DoubleStream inIcuCumulativeStream() {
+		return DoubleStream.of(inIcuCumulative);
 	}
 	
-	public IntStream inIcuCurrentlyStream() {
-		return IntStream.of(inIcuCurrently);
+	public DoubleStream inIcuCurrentlyStream() {
+		return DoubleStream.of(inIcuCurrently);
 	}
 	
-	public IntStream negativeStream() {
-		return IntStream.of(negative);
+	public DoubleStream negativeStream() {
+		return DoubleStream.of(negative);
 	}
 	
-	public IntStream negativeIncreaseStream() {
-		return IntStream.of(negativeIncrease);
+	public DoubleStream negativeIncreaseStream() {
+		return DoubleStream.of(negativeIncrease);
 	}
 	
-	public IntStream onVentilatorCurrentlyStream() {
-		return IntStream.of(onVentilatorCurrently);
+	public DoubleStream onVentilatorCurrentlyStream() {
+		return DoubleStream.of(onVentilatorCurrently);
 	}
 	
-	public IntStream pendingStream() {
-		return IntStream.of(pending);
+	public DoubleStream pendingStream() {
+		return DoubleStream.of(pending);
 	}
 	
-	public IntStream positiveStream() {
-		return IntStream.of(positive);
+	public DoubleStream positiveStream() {
+		return DoubleStream.of(positive);
 	}
 	
-	public IntStream positiveIncreaseStream() {
-		return IntStream.of(positiveIncrease);
+	public DoubleStream positiveIncreaseStream() {
+		return DoubleStream.of(positiveIncrease);
 	}
 	
-	public IntStream totalTestResultsIncreaseStream() {
-		return IntStream.of(totalTestResultsIncrease);
+	public DoubleStream totalTestResultsIncreaseStream() {
+		return DoubleStream.of(totalTestResultsIncrease);
 	}
 	
 	public Stream<DataFrame> fusedFramesStream() {
