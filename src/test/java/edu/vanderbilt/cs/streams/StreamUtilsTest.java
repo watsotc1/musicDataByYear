@@ -4,21 +4,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StreamUtilsTest {
-
-    public static BikeRide loadSampleRide() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new FileInputStream("src/main/resources/data.json"), BikeRide.class);
+	
+	public static COVIDdata loadData() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(new FileInputStream("src/main/resources/covidData.json"), COVIDdata.class);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
