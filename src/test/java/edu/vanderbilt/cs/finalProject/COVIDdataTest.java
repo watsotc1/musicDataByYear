@@ -1,6 +1,9 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import edu.vanderbilt.cs.finalProject.COVIDdata;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

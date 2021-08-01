@@ -1,9 +1,9 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import edu.vanderbilt.cs.streams.COVIDdata.DataFrame;
+import edu.vanderbilt.cs.finalProject.COVIDdata.DataFrame;
 
 public class COVIDstats {
 	
@@ -36,9 +36,11 @@ public class COVIDstats {
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getNegative).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getNegativeIncrease).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getOnVentilatorCurrently).apply(ls),
+		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getOnVentilatorCumulative).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getPending).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getPositive).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getPositiveIncrease).apply(ls),
+		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getTotalTestResults).apply(ls),
 		    	    			StreamUtils.averageOfProperty(COVIDdata.DataFrame::getTotalTestResultsIncrease).apply(ls)));
     	
     	

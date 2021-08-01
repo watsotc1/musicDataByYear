@@ -1,7 +1,8 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 import java.util.stream.IntStream;
 
 public class COVIDstatsTest {

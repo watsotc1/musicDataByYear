@@ -1,4 +1,4 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -22,16 +22,18 @@ public class COVIDdata {
 		public final double negative;
 		public final double negativeIncrease;
 		public final double onVentilatorCurrently;
+		public final double onVentilatorCumulative;
 		public final double pending;
 		public final double positive;
 		public final double positiveIncrease;
+		public final double totalTestResults;
 		public final double totalTestResultsIncrease;
 		
 		public DataFrame(String date,double death,double deathIncrease,
 				double hospitalizedCumulative,double hospitalizedCurrently,
 				double hospitalizedIncrease,double inIcuCumulative,double inIcuCurrently,
-				double negative,double negativeIncrease,double onVentilatorCurrently,
-				double pending,double positive,double positiveIncrease,double totalTestResultsIncrease) {
+				double negative,double negativeIncrease,double onVentilatorCurrently,double onVentilatorCumulative,
+				double pending,double positive,double positiveIncrease,double totalTestResults,double totalTestResultsIncrease) {
 			
 			super();
 			this.date = date;
@@ -45,9 +47,11 @@ public class COVIDdata {
 			this.negative = negative;
 			this.negativeIncrease = negativeIncrease;
 			this.onVentilatorCurrently = onVentilatorCurrently;
+			this.onVentilatorCumulative = onVentilatorCumulative;
 			this.pending = pending;
 			this.positive = positive;
 			this.positiveIncrease = positiveIncrease;
+			this.totalTestResults = totalTestResults;
 			this.totalTestResultsIncrease = totalTestResultsIncrease;	
 		}
 		
@@ -94,6 +98,10 @@ public class COVIDdata {
 			return onVentilatorCurrently;
 		}
 		
+		public double getOnVentilatorCumulative() {
+			return onVentilatorCumulative;
+		}
+		
 		public double getPending() {
 			return pending;
 		}
@@ -104,6 +112,10 @@ public class COVIDdata {
 		
 		public double getPositiveIncrease() {
 			return positiveIncrease;
+		}
+		
+		public double getTotalTestResults() {
+			return totalTestResults;
 		}
 		
 		public double getTotalTestResultsIncrease() {
@@ -124,7 +136,7 @@ public class COVIDdata {
         public void setOther(String key, Object v) {}
 	}
 	
-public static class DateStream {
+	public static class DateStream {
 		
 		public final String[] data;
 		
@@ -148,9 +160,11 @@ public static class DateStream {
 	public final double[] negative;
 	public final double[] negativeIncrease;
 	public final double[] onVentilatorCurrently;
+	public final double[] onVentilatorCumulative;
 	public final double[] pending;
 	public final double[] positive;
 	public final double[] positiveIncrease;
+	public final double[] totalTestResults;
 	public final double[] totalTestResultsIncrease;
 	
 	@JsonCreator
@@ -165,9 +179,11 @@ public static class DateStream {
 					 @JsonProperty("negative") DataStream negative,
 					 @JsonProperty("negativeIncrease") DataStream negativeIncrease,
 					 @JsonProperty("onVentilatorCurrently") DataStream onVentilatorCurrently,
+					 @JsonProperty("onVentilatorCumulative") DataStream onVentilatorCumulative,
 					 @JsonProperty("pending") DataStream pending,
 					 @JsonProperty("positive") DataStream positive,
 					 @JsonProperty("positiveIncrease") DataStream positiveIncrease,
+					 @JsonProperty("totalTestResults") DataStream totalTestResults,
 					 @JsonProperty("totalTestResultsIncrease") DataStream totalTestResultsIncrease) {
 	
 		super();
@@ -182,9 +198,11 @@ public static class DateStream {
 		this.negative = negative.data;
 		this.negativeIncrease = negativeIncrease.data;
 		this.onVentilatorCurrently = onVentilatorCurrently.data;
+		this.onVentilatorCumulative = onVentilatorCumulative.data;
 		this.pending = pending.data;
 		this.positive = positive.data;
 		this.positiveIncrease = positiveIncrease.data;
+		this.totalTestResults = totalTestResults.data;
 		this.totalTestResultsIncrease = totalTestResultsIncrease.data;
 	}
 	
@@ -228,6 +246,10 @@ public static class DateStream {
 		return DoubleStream.of(negativeIncrease);
 	}
 	
+	public DoubleStream onVentilatorCumulativeStream() {
+		return DoubleStream.of(onVentilatorCumulative);
+	}
+	
 	public DoubleStream onVentilatorCurrentlyStream() {
 		return DoubleStream.of(onVentilatorCurrently);
 	}
@@ -244,6 +266,11 @@ public static class DateStream {
 		return DoubleStream.of(positiveIncrease);
 	}
 	
+	public DoubleStream totalTestResultsStream() {
+		return DoubleStream.of(totalTestResults);
+	}
+	
+	
 	public DoubleStream totalTestResultsIncreaseStream() {
 		return DoubleStream.of(totalTestResultsIncrease);
 	}
@@ -254,8 +281,8 @@ public static class DateStream {
         		.mapToObj(i -> new DataFrame(date[i],death[i],deathIncrease[i],
         										hospitalizedCumulative[i],hospitalizedCurrently[i],
 						        				hospitalizedIncrease[i],inIcuCumulative[i],inIcuCurrently[i],
-						        				negative[i],negativeIncrease[i],onVentilatorCurrently[i],
-						        				pending[i],positive[i],positiveIncrease[i],totalTestResultsIncrease[i]));
+						        				negative[i],negativeIncrease[i],onVentilatorCurrently[i],onVentilatorCumulative[i],
+						        				pending[i],positive[i],positiveIncrease[i],totalTestResults[i],totalTestResultsIncrease[i]));
     }
 	// Don't change me!
     //

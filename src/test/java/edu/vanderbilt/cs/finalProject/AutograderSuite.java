@@ -1,4 +1,4 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectClasses;

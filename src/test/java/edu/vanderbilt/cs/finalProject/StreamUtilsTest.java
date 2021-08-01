@@ -1,6 +1,10 @@
-package edu.vanderbilt.cs.streams;
+package edu.vanderbilt.cs.finalProject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import edu.vanderbilt.cs.finalProject.COVIDdata;
+import edu.vanderbilt.cs.finalProject.StreamUtils;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
