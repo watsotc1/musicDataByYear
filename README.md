@@ -27,7 +27,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/watsotc1/covidDataTracking">
-    <img src="images/logo.png" alt="Logo" width="500" height="100">
+    <img src="images/logo.png" alt="Logo" width="500" height="150">
   </a>
 
   <h3 align="center">COVID-19 Data Visualization Tool</h3>
@@ -36,8 +36,7 @@
     Visualization tool for open source data collected during the COVID-19 pandemic. 
     <br />
     <a href="https://github.com/watsotc1/covidDataTracking"><strong>Explore the docs »</strong></a>
-    .
-    <a href="https://covidtracking.com/data/api">View/Download the data for yourself!»</strong></a>
+    <a href="https://covidtracking.com/data/api">View/Download the data for yourself! »</strong></a>
   </p>
 </p>
 
@@ -74,7 +73,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+ <img src="images/screenShot.png" alt="Logo" width="1000" height="700">
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
