@@ -20,12 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -36,19 +30,14 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">COVID Data GUI </h3>
+  <h3 align="center">COVID-19 Data Visualization Tool</h3>
 
   <p align="center">
-    project_description
+    Visualization tool for open source data collected during the COVID-19 pandemic. 
     <br />
     <a href="https://github.com/watsotc1/covidDataTracking"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/watsotc1/covidDataTracking">View Demo</a>
-    ·
-    <a href="https://github.com/watsotc1/covidDataTracking/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/watsotc1/covidDataTracking/issues">Request Feature</a>
+    .
+    <a href="https://covidtracking.com/data/api">View/Download the data for yourself!»</strong></a>
   </p>
 </p>
 
