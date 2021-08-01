@@ -27,7 +27,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/watsotc1/covidDataTracking">
-    <img src="images/logo.png" alt="Logo" width="100" height="200">
+    <img src="images/logo.png" alt="Logo" width="500" height="100">
   </a>
 
   <h3 align="center">COVID-19 Data Visualization Tool</h3>
