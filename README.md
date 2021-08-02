@@ -41,18 +41,24 @@
 </p>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+The Spotify API Data Visualization Tool allows users to navigate through and visualize the data provided through Spotify's Web API. 
 
-Here's a blank template to get started:
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/screenShot.PNG)
+
+The tool (pictured above) features a simple design that allows the user to select from the available data and see the observed trends from the last one hundred years.
+
+### Overall Architecture
+
+### Interesting Challenges And Solutions
 
 
 ### Built With
 
 * [Java]()
+* [Gradle]()
 
 
 <!-- GETTING STARTED -->
@@ -64,6 +70,8 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/watsotc1/covidDataTracking.git
    ```
+2. Import project into Eclipse
+3. Sync Gradle and run 'PlotTool.java'
 
 
 <!-- USAGE EXAMPLES -->
