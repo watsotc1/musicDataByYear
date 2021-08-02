@@ -112,7 +112,7 @@ Note: The user can generate a plot for another data set without having to reset 
 
 ### Interesting Challenges And Solutions
 
-1) I originally wanted to make this into an Android App using Android Studio. However, my personal laptop wasn't able to support the heavy loads of the program. Instead I switched focus and learned about Java's Swing. Swing is the successor to AWT and builds directly onto it, fixing and replacing many of the features as well as including additonal functionality. The majority of my prior experience in building GUIs has been through Python and MATLAB so this was a large learning curve for me.
+I originally wanted to make this into an Android App using Android Studio. However, my personal laptop wasn't able to support the heavy loads of the program. Instead I switched focus and learned about Java's Swing. Swing is the successor to AWT and builds directly onto it, fixing and replacing many of the features as well as including additonal functionality. The majority of my prior experience in building GUIs has been through Python and MATLAB so this was a large learning curve for me.
 
 ### Built With
 
