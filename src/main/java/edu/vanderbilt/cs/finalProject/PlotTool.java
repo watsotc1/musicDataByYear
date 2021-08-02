@@ -204,7 +204,7 @@ public class PlotTool {
 			
 			//Build Chart
 			JFreeChart chart = ChartFactory.createTimeSeriesChart(
-			        "Spotify Dataset 1922-2021, ~600k Tracks", // Chart
+			        "Spotify Dataset " + windowInput.getText() + ", ~600k Tracks", // Chart
 			        "Year", // X-Axis Label
 			        selectedData, // Y-Axis Label
 			        dataset);
