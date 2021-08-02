@@ -88,7 +88,7 @@ public class PlotTool {
 	    cb.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    plotPanel.add(cb);
 	    
-	    windowLbl = new JLabel("Select Years To View (YYYY-YYYY): ");
+	    windowLbl = new JLabel("Select Time Frame (YYYY-YYYY): ");
 	    windowLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    plotPanel.add(windowLbl);
 	    
