@@ -24,7 +24,7 @@ public class MusicByYearStats {
 		}
 		
 		//Find window size
-		int windowSize = lastYear - lastYear;
+		int windowSize = lastYear - firstYear;
         if((windowSize > data.size()) || windowSize < 1 || windowSize > 100) {
         	errorPopup("Incorrect Input Format! Please only enter dates within the following time frame: 1921-2020");
         	return Collections.emptyList();
