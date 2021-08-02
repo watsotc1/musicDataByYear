@@ -19,7 +19,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The Spotify API Data Visualization Tool allows users to navigate through and visualize the data provided through Spotify's Web API. 
+The Spotify API Data Visualization Tool allows users to navigate through and visualize the data provided from Spotify's Web API. 
 
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/screenShot.PNG)
 
