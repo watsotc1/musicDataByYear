@@ -32,7 +32,7 @@ The tool is made up of three primary files as well as a testing script that runs
 2) _MusicByYearData.java_
 3) _MusicByYearStats.java_
 
-The main script is _PlotTool.java_, which builds the GUI and calls the sumplemental functions found in the remaining two files. 
+The main script is _PlotTool.java_, which builds the GUI and calls the classes found in the remaining two files. 
 To start, the user selects the data they want to plot from the drop down menu.
 
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/dropDown.png)
@@ -67,7 +67,7 @@ Note: If the user inputs the dates in an incorrect format, or outside of the dat
 
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/errorPopup.PNG)
 
-Next, the slected data's description will be loaded from the _musicDataInfo_ Map. The Map is set up using the data name as the key, and the data's description as the value. 
+Next, the selected data's description will be loaded from the _musicDataInfo_ Map. The Map is set up using the data name as the key, and the data's description as the value. 
 
 ```
 //Load Data Info
@@ -112,7 +112,7 @@ Note: The user can generate a plot for another data set without having to reset 
 
 ### Interesting Challenges And Solutions
 
-I originally wanted to make this into an Android App using Android Studio. However, my personal laptop wasn't able to support the heavy loads of the program. Instead I switched focus and learned about Java's Swing. Swing is the successor to AWT and builds directly onto it, fixing and replacing many of the features as well as including additonal functionality. The majority of my prior experience in building GUIs has been through Python and MATLAB so this was a large learning curve for me.
+I originally wanted to make this into an Android App using Android Studio. However, my personal laptop wasn't able to support the heavy loads of the program. Instead I switched focus and learned about Java's Swing. Swing is the successor to AWT and builds directly onto it, fixing and replacing many of the features as well as including additional functionality. The majority of my prior experience in building GUIs has been through Python and MATLAB so this was a large learning curve for me.
 
 ### Built With
 
