@@ -48,9 +48,27 @@ The Spotify API Data Visualization Tool allows users to navigate through and vis
 
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/screenShot.PNG)
 
-The tool (pictured above) features a simple design that allows the user to select from the available data and see the observed trends from the last one hundred years.
+The tool (pictured above) features a simple design that allows the user to select from the available data and see the recorded music trends from the last one hundred years.
 
-### Overall Architecture
+### Overall Design
+
+The tool is made up of three primary files as well as a testing script that runs upon each push to the repo:
+1) PlotTool.java
+2) MusicByYearData.java
+3) MusicByYearStats.java
+
+The main script is 'PlotTool.java', which builds the GUI and calls the sumplemental functions found in the remaining two files. 
+
+To start, the user selects the data they want to plot from the drop down menu.
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/dropDown.PNG)
+
+Then the user can select the years they want to see data through:
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/enterDate.PNG)
+
+Todo: explain process after plot:
+
+Note: If the user inputs the dates in an incorrect format, or outside of the data's range then the function will return an empty list and display a popup window reminding the user of the correct format and time range. 
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/errorPopup.PNG)
 
 ### Interesting Challenges And Solutions
 
@@ -72,14 +90,4 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Import project into Eclipse
 3. Sync Gradle and run 'PlotTool.java'
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
 
