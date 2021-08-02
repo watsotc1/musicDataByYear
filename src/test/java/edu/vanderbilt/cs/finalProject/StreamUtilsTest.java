@@ -2,7 +2,7 @@ package edu.vanderbilt.cs.finalProject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import edu.vanderbilt.cs.finalProject.musicByYearData;
+import edu.vanderbilt.cs.finalProject.MusicByYearData;
 import edu.vanderbilt.cs.finalProject.StreamUtils;
 
 import org.junit.jupiter.api.Test;
@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StreamUtilsTest {
 	
-	public static musicByYearData loadData() {
+	public static MusicByYearData loadData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(new FileInputStream("src/main/resources/covidData.json"), musicByYearData.class);
+            return mapper.readValue(new FileInputStream("src/main/resources/covidData.json"), MusicByYearData.class);
         } catch (Exception e){
             throw new RuntimeException(e);
         }

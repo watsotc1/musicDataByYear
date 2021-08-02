@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class musicByYearData {
+public class MusicByYearData {
 	
 	public static class DataFrame {
 		public final int mode; 
@@ -49,56 +49,56 @@ public class musicByYearData {
 			this.popularity =popularity; 	
 		}
 		
-		public int mode() {
+		public int getMode() {
 			return mode;
 		}
 		
-		public int key() {
+		public int getKey() {
 			return key;
 		}
 		
-		public String year() { 
+		public String getYear() { 
 			return year;
 		}
-		public double acousticness() { 
+		public double getAcousticness() { 
 			return acousticness;
 		}
 		
-		public double danceability() { 
+		public double getDanceability() { 
 			return danceability;
 		}
 		
-		public double duration() { 
+		public double getDuration() { 
 			return duration;
 		}
-		public double energy() { 
+		public double getEnergy() { 
 			return energy;
 		}
 		
-		public double instrumentalness() { 
+		public double getInstrumentalness() { 
 			return instrumentalness;
 		}
 		
-		public double liveness() {
+		public double getLiveness() {
 			return liveness;
 		}
 		
-		public double loudness() { 
+		public double getLoudness() { 
 			return loudness;
 		}
 		
-		public double speechiness() { 
+		public double getSpeechiness() { 
 			return speechiness;
 		}
 		
-		public double tempo() { 
+		public double getTempo() { 
 			return tempo;
 		}
-		public double valence() { 
+		public double getValence() { 
 			return valence;
 		}
 		
-		public double popularity() { 
+		public double getPopularity() { 
 			return popularity;
 		}
 	}
@@ -158,7 +158,7 @@ public class musicByYearData {
 	public final double[] popularity; 
 	
 	@JsonCreator
-	public musicByYearData(@JsonProperty("mode") intDataStream mode,
+	public MusicByYearData(@JsonProperty("mode") intDataStream mode,
 					 @JsonProperty("key") intDataStream key,
 					 @JsonProperty("year") stringDataStream year,
 					 @JsonProperty("acousticness") doubleDataStream acousticness,
