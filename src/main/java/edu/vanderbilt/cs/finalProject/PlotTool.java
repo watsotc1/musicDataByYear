@@ -43,6 +43,7 @@ public class PlotTool {
 	final JComboBox<String> cb;
 	dataChoiceHandler dcHandler = new dataChoiceHandler();
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+	Map<String, String> musicDataInfo = new LinkedHashMap<>();
 
 	public static void main(String[] args) {
 		new PlotTool();
@@ -248,8 +249,6 @@ public class PlotTool {
 	public Day setDay(String stringDate) {
 		return new Day(1,1,Integer.parseInt(stringDate));
 	}
-	
-private Map<String, String> musicDataInfo = new LinkedHashMap<>();
 	
 	public Map<String, String> setMusicInfo(){
     	musicDataInfo.put("Mode", "Mode indicates the modality (major or minor) of a track, "
