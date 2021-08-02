@@ -26,17 +26,17 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/watsotc1/covidDataTracking">
+  <a href="https://github.com/watsotc1/musicDataByYear">
     <img src="images/logo.png" alt="Logo" width="500" height="150">
   </a>
 
-  <h3 align="center">COVID-19 Data Visualization Tool</h3>
+  <h3 align="center">Spotify Data Visualization Tool</h3>
 
   <p align="center">
     Visualization tool for open source data collected during the COVID-19 pandemic. 
     <br />
-    <a href="https://github.com/watsotc1/covidDataTracking"><strong>Explore the docs »</strong></a>
-    <a href="https://covidtracking.com/data/api">View/Download the data for yourself! »</strong></a>
+    <a href="https://github.com/watsotc1/musicDataByYear"><strong>Explore the docs »</strong></a>
+    <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-track">View/Download the data for yourself! »</strong></a>
   </p>
 </p>
 
