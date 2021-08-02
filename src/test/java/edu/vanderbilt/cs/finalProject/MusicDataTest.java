@@ -3,11 +3,14 @@ package edu.vanderbilt.cs.finalProject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.vanderbilt.cs.finalProject.MusicByYearData;
+import edu.vanderbilt.cs.finalProject.MusicByYearData.DataFrame;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileInputStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MusicDataTest {
 	public static final int EXPECTED_DATA_ITEMS = 100;
@@ -161,6 +164,23 @@ public class MusicDataTest {
         assertEquals(EXPECTED_AVG_popularity,
                 data.fusedFramesStream().mapToDouble(f -> f.popularity).average().getAsDouble(),
                 0.1);
+    }
+    
+    @Test
+    public void testSlidingWindow(){
+    	MusicByYearData data = loadData();
+    	
+    	List<DataFrame> tmp = MusicByYearStats.slidingWindow(data
+    			.fusedFramesStream()
+    			.collect(Collectors.toList()),"1950-1990");
+        assertEquals("1950", tmp.get(0).getYear());
+        assertEquals("1990", tmp.get(tmp.size()-1).getYear());
+        
+        List<DataFrame> tmp2 = MusicByYearStats.slidingWindow(data
+    			.fusedFramesStream()
+    			.collect(Collectors.toList()),"1990-2015");
+        assertEquals("1990", tmp2.get(0).getYear());
+        assertEquals("2015", tmp2.get(tmp2.size()-1).getYear());
     }
 
 }

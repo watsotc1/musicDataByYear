@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
@@ -34,9 +35,10 @@ public class PlotTool {
 	
 	JFrame frame;
 	JPanel plotPanel,infoPanel;
-	JLabel lbl;
+	JLabel choiceLbl, windowLbl;
 	JButton plotBtn;
 	JTextArea dataInfo;
+	JTextField windowInput;
 	MusicByYearData data;
 	final JComboBox<String> cb;
 	dataChoiceHandler dcHandler = new dataChoiceHandler();
@@ -71,6 +73,10 @@ public class PlotTool {
 	    plotPanel.setLayout(new BoxLayout(plotPanel, BoxLayout.Y_AXIS));
 	    frame.add(plotPanel);
 
+	    choiceLbl = new JLabel("Select Data:");
+	    choiceLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    plotPanel.add(choiceLbl);
+	    
 	    //Initialize User Selection Tool
 	    String[] choices = {"Mode","Acousticness","Danceability",
 	    		"Duration","Energy","Instrumentalness","Liveness","Loudness",
@@ -81,6 +87,17 @@ public class PlotTool {
 	    cb.setMaximumSize(cb.getPreferredSize());
 	    cb.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    plotPanel.add(cb);
+	    
+	    windowLbl = new JLabel("Select Years To View (YYYY-YYYY): ");
+	    windowLbl.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    plotPanel.add(windowLbl);
+	    
+	    //Initialize Window Input
+	    windowInput = new JTextField("1921-2020",3);
+	    windowInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    windowInput.setMaximumSize(new Dimension(75,30));
+	    plotPanel.add(windowInput);
+	    
 
 	    //Initialize Plot Button
 	    plotBtn = new JButton("PLOT");
@@ -99,6 +116,11 @@ public class PlotTool {
 			data = loadData();
 			List<DataFrame> tmp = data.fusedFramesStream().collect(Collectors.toList());
 			
+			//Get sublist if specified
+			if (!windowInput.getText().equals("1921-2020")) {
+				tmp = MusicByYearStats.slidingWindow(tmp, windowInput.getText());
+			}
+			
 			//Load Data Info
 			Map<String, String> musicDataInfo = setMusicInfo();
 			
@@ -112,67 +134,67 @@ public class PlotTool {
 			//Gather Series Data according to User Input
 			switch (selectedData) {
 			case "Mode":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getMode());
 				}
 				break;
 			case "Key":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getKey());
 				}
 				break;
 			case "Acousticness":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getAcousticness());
 				}
 				break;
 			case "Danceability":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getDanceability());
 				}
 				break;
 			case "Duration":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getDuration());
 				}
 				break;
 			case "Energy":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getEnergy());
 				}
 				break;
 			case "Instrumentalness":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getInstrumentalness());
 				}
 				break;
 			case "Liveness":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getLiveness());
 				}
 				break;
 			case "Loudness":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getLoudness());
 				}
 				break;
 			case "Speechiness":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getSpeechiness());
 				}
 				break;
 			case "Tempo":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getTempo());
 				}
 				break;
 			case "Valence":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getValence());
 				}
 				break;
 			case "Popularity":
-				for (int i = 0; i < data.fusedFramesStream().count(); i++) {
+				for (int i = 0; i < tmp.size(); i++) {
 					series.addOrUpdate(setDay(tmp.get(i).getYear()),tmp.get(i).getPopularity());
 				}
 				break;
