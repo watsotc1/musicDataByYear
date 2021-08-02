@@ -27,16 +27,16 @@
 <br />
 <p align="center">
   <a href="https://github.com/watsotc1/musicDataByYear">
-    <img src="images/logo.png" alt="Logo" width="500" height="150">
+    <img src="images/icon.png" alt="Logo" width="500" height="200">
   </a>
 
-  <h3 align="center">Spotify Data Visualization Tool</h3>
+  <h3 align="center">Spotify API Data Visualization Tool</h3>
 
   <p align="center">
     Visualization tool for open source data collected during the COVID-19 pandemic. 
     <br />
     <a href="https://github.com/watsotc1/musicDataByYear"><strong>Explore the docs »</strong></a>
-    <a href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-track">View/Download the data for yourself! »</strong></a>
+    <a href="https://developer.spotify.com/documentation/web-api/quick-start/">View/Download the data for yourself! »</strong></a>
   </p>
 </p>
 
