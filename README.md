@@ -1,28 +1,3 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** watsotc1, covidDataTracking, twitter_handle, email, COVID Data GUI , project_description
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -53,22 +28,87 @@ The tool (pictured above) features a simple design that allows the user to selec
 ### Overall Design
 
 The tool is made up of three primary files as well as a testing script that runs upon each push to the repo:
-1) PlotTool.java
-2) MusicByYearData.java
-3) MusicByYearStats.java
+1) _PlotTool.java_
+2) _MusicByYearData.java_
+3) _MusicByYearStats.java_
 
-The main script is 'PlotTool.java', which builds the GUI and calls the sumplemental functions found in the remaining two files. 
-
+The main script is _PlotTool.java_, which builds the GUI and calls the sumplemental functions found in the remaining two files. 
 To start, the user selects the data they want to plot from the drop down menu.
-![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/dropDown.PNG)
+
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/dropDown.png)
 
 Then the user can select the years they want to see data through:
+
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/enterDate.PNG)
 
-Todo: explain process after plot:
+Finally, the user can click the plot button which triggers the _dataChoiceHandler_ function which implements Java's _ActionListener_. This function first calls _loadData()_ which will read in the JSON data file, then use the _MusicByYearData_ Class to sort and store said data. A stream is then generated using _MusicByYearData's fusedFramesStream()_.
+
+```
+  public static MusicByYearData loadData() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(new FileInputStream("src/main/resources/musicData.json"), MusicByYearData.class);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+  }
+```
+
+Next, the function will check if the user updated the selected years. If so, it will call _MusicByYearStats's slidingWindow()_ which will return a sublist of data for the years selected.
+
+```
+  //Get sublist if specified
+  if (!windowInput.getText().equals("1921-2020")) {
+      List<DataFrame> subList = MusicByYearStats.slidingWindow(dataFrameStream, windowInput.getText());
+  }
+```
 
 Note: If the user inputs the dates in an incorrect format, or outside of the data's range then the function will return an empty list and display a popup window reminding the user of the correct format and time range. 
+
 ![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/errorPopup.PNG)
+
+Next, the slected data's description will be loaded from the _musicDataInfo_ Map. The Map is set up using the data name as the key, and the data's description as the value. 
+
+```
+//Load Data Info
+Map<String, String> musicDataInfo = setMusicInfo();
+```
+
+```
+public Map<String, String> setMusicInfo(){
+    musicDataInfo.put("Mode", "Mode indicates the modality (major or minor) of a track, "
+              + "the type of scale from which its melodic content is derived."
+              + "Major is represented by 1 and minor is 0.");
+    ...
+}
+```
+
+Following this, the scrip initializes the Time Series and uses a switch case to format the data for the plot. Then the plot is generated and added/updated in the window.
+
+```
+      //Build Chart
+			JFreeChart chart = ChartFactory.createTimeSeriesChart(
+			        "Spotify Dataset " + windowInput.getText() + ", ~600k Tracks", // Chart
+			        "Year", // X-Axis Label
+			        selectedData, // Y-Axis Label
+			        dataset);
+			
+			//Remove any previous plot components
+			removePlotComponents();
+			
+			//Build Data Info Box
+			dataInfo = new JTextArea(musicDataInfo.get(selectedData));
+			dataInfo.setLineWrap(true);
+			dataInfo.setWrapStyleWord(true);
+			
+			//Add components to window
+			plotPanel.add(new ChartPanel(chart));
+			plotPanel.add(dataInfo);
+```
+
+![alt text](https://github.com/watsotc1/musicDataByYear/blob/main/images/screenShot.PNG)
+
+Note: The user can generate a plot for another data set without having to reset the tool. 
 
 ### Interesting Challenges And Solutions
 
