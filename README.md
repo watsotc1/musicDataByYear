@@ -110,14 +110,34 @@ Following this, the scrip initializes the Time Series and uses a switch case to 
 
 Note: The user can generate a plot for another data set without having to reset the tool. 
 
+### Design Patterns
+
+* Observer Pattern
+	* The observer pattern is a software design pattern in which an object, named the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+	* ActionListener is an example of the observer pattern. You register observers (or listeners) on a component that get called when a specific event occurs.
+
+* Model View Controller (MVC) Pattern
+	*  The MVC architectural pattern is used in software engineering to allow for the separation of three common features of GUI applications:
+		*  the data access (typically via a database)
+		*  the business logic (how the data will be used)
+		*  user interaction (how the data and actions will be visually presented)
+	* In our case, the MVC breaks down as follows:  
+		*  Model:
+			*  A model is an abstraction of something that you want to present the user in a view. (GUI)
+		*  View:
+			*  A View covers the aspects of how data is presented to the user and how visual componets are organized (Plot)
+		*  Controller:
+			*  A controller is a component that is invoked as a result of a user’s action on a view. (Plot Button/Data Selection/Action Listener)
+
 ### Interesting Challenges And Solutions
 
 I originally wanted to make this into an Android App using Android Studio. However, my personal laptop wasn't able to support the heavy loads of the program. Instead, I switched focus and learned about Java's Swing. Swing is the successor to AWT and builds directly onto it, fixing and replacing many of the features as well as including additional functionality. The majority of my prior experience in building GUIs has been through Python and MATLAB so this was a large learning curve for me.
 
 ### Built With
 
-* [Java]()
-* [Gradle]()
+* [Java](https://www.java.com/en/)
+* [Java SWING](https://docs.oracle.com/javase/tutorial/uiswing/)
+* [Gradle](https://gradle.org/)
 
 
 <!-- GETTING STARTED -->
